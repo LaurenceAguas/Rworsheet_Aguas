@@ -1,0 +1,62 @@
+---
+title: "RWorksheet_Aguas#3a"
+author: "Laurence Aguas"
+date: "2023-10-05"
+output: html_document
+---
+
+*SmallLetters <- letters*
+
+*SmallLetters*
+
+
+***1)***
+*Based on the above vector LETTERS:*
+
+***a. You need to produce a vector that contains the first 11 letters.***
+
+
+*VectorLetters <- LETTERS [1:11]*
+
+*VectorLetters*
+
+**[1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K"**
+
+***b. Produce a vector that contains the odd numbered letters.***
+
+*oddLetters <- LETTERS [c(1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25)]*
+
+*oddLetters*
+
+**[1] "A" "C" "E" "G" "I" "K" "M" "O" "Q" "S" "U" "W" "Y"**
+ 
+***c. Produce a vector that contains the vowels***
+
+*vowelLetters <- LETTERS [c(1,5,9,15)]*
+
+*vowelLetters*
+
+**[1] "A" "E" "I" "O"**
+
+*Based on the above vector letters:*
+
+***d. Produce a vector that contains the last 5 lowercase letters.***
+
+*Last5Lowercase <- letters [c(22,23,24,25,26)]*
+
+*Last5Lowercase*
+
+**[1] "v" "w" "x" "y" "z**
+
+***e. Produce a vector that contains letters between 15 to 24 letters in lowercase.***
+
+*Fifteento20 <- letters [c(15:24)]*
+
+*Fifteento20*
+
+**[1] "o" "p" "q" "r" "s" "t" "u" "v" "w" "x"**
+
+***2. Create a vector(not a dataframe) with the average temperatures in April for Tuguegarao City, Manila, Iloilo City, Tacloban, Samal Island, and Davao City. The average temperatures in Celcius are 42, 39, 34, 34, 30, and 27 degrees.***
+
+ git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
