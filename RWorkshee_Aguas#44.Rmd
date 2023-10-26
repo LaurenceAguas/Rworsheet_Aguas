@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 
 
 
@@ -41,16 +46,57 @@ months <- c("March","April","January","November","January",
 factorMonthsVec <- factor(months)
 factorMonthsVec
 
-#3. Then check the summary() of the months_vector and factor_months_vector. | Inter-pret the results of both vectors. Are they both equally useful in this case?
+# 3Then check the summary() of the months_vector and factor_months_vector. | Interpret the results of both vectors. Are they both equally useful in this case?
+summary(months)
+summary(factorMonthsVec)
 
-summaryofMonths<- summary (months)
-summaryofMonths
+# In the summary of months_vector, it shows the number of observations, class, and mode of the vector. 
 
-asd
+# In the summary of factor_months_vector, it shows the frequency of each months.
 
+# Both are useful in different cases where the no. of observations, class, mode, or the frequency is needed.
 
+# 4. Create a vector and factor for the table below.
 
+factor_data <- c(1,4,3)
+new_order_data <- factor(factor_data,levels = c("East","West","North"))
+print(new_order_data)
 
+# 5
+imported_table <- read.table(file = "/cloud/project/worksheet#4/import_march.csv", header = TRUE, sep = ",")
+View(imported_table)
+# 6
+randomNumber <- readline(prompt = "Enter number from 1 to 50: ")
+randomNumber <- as.numeric(randomNumber)
+paste("The number you have chosen is", randomNumber)
+if (randomNumber > 50) {
+  paste("The number selected is beyond the range of 1 to 50")
+} else if (randomNumber == 20) {
+  paste("TRUE")
+} else {
+  paste(randomNumber)
+}
+# 7
+minimumBills <- function(price) {
+  
+  minBills <- price %/% 50
+  paste("The minimum no. of bills:", minBills)
+}
+minimumBills(90)
 
+# 8.a
+Names <- c("Annie", "Thea", "Steve", "Hanna")
+Grade1 <- c(85,65,75,95)
+Grade2 <- c(65,75,55,75)
+Grade3 <- c(85,90,80,100)
+Grade4 <- c(100,90,85,90)
+Math <- data.frame(
+  Name = names,
+  Grade1 = grade1,
+  Grade2 = grade2,
+  Grade3 = grade3,
+  Grade4 = grade4
+)
+Math
 
-
+# 8.b
