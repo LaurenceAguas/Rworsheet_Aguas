@@ -16,7 +16,7 @@ Height=c(66.0,68.0,64.5,65.0,70.0,64.0,70.0,71.0,72.0,64.0,74.5,67.0,71.0,71.0,7
 Shoesize
 
 #a. Describe the data.
-
+#The shoe size and height of M is much more higher than F
 
 
 #b. Create a subset by males and females with their corresponding shoe size and height.What its result? Show the R scripts.
@@ -50,11 +50,11 @@ factorMonthsVec
 summary(months)
 summary(factorMonthsVec)
 
-# In the summary of months_vector, it shows the number of observations, class, and mode of the vector. 
+#The number of observations, class, and mode of the months_vector are displayed in the summary. 
 
-# In the summary of factor_months_vector, it shows the frequency of each months.
+# The frequency of each month is shown in the factor_months_vector summary.
 
-# Both are useful in different cases where the no. of observations, class, mode, or the frequency is needed.
+# Both are beneficial in many situations when the quantity of observations, class, mode, or frequency are required.
 
 # 4. Create a vector and factor for the table below.
 
@@ -63,19 +63,30 @@ new_order_data <- factor(factor_data,levels = c("East","West","North"))
 print(new_order_data)
 
 # 5
-imported_table <- read.table(file = "/cloud/project/worksheet#4/import_march.csv", header = TRUE, sep = ",")
+
+imported_table <- read.table(file = "/cloud/project/worksheet4/import_march.csv", header = TRUE, sep = ",")
+
 View(imported_table)
+
 # 6
 randomNumber <- readline(prompt = "Enter number from 1 to 50: ")
+
 randomNumber <- as.numeric(randomNumber)
 paste("The number you have chosen is", randomNumber)
-if (randomNumber > 50) {
+
+if (randomNumber > 50) 
+{
   paste("The number selected is beyond the range of 1 to 50")
-} else if (randomNumber == 20) {
+   }
+  else if (randomNumber == 20) 
+  {
   paste("TRUE")
-} else {
+  } 
+  else 
+  {
   paste(randomNumber)
 }
+
 # 7
 minimumBills <- function(price) {
   
@@ -86,17 +97,53 @@ minimumBills(90)
 
 # 8.a
 Names <- c("Annie", "Thea", "Steve", "Hanna")
-Grade1 <- c(85,65,75,95)
-Grade2 <- c(65,75,55,75)
-Grade3 <- c(85,90,80,100)
-Grade4 <- c(100,90,85,90)
+Grade1 <- c(85, 65, 75, 95)
+Grade2 <- c(65, 75, 55, 75)
+Grade3 <- c(85, 90, 80, 100)
+Grade4 <- c(100, 90, 85, 90)
+
 Math <- data.frame(
-  Name = names,
-  Grade1 = grade1,
-  Grade2 = grade2,
-  Grade3 = grade3,
-  Grade4 = grade4
+  Name = Names,  
+  Grade1 = Grade1,  
+  Grade2 = Grade2,  
+  Grade3 = Grade3,  
+  Grade4 = Grade4   
 )
 Math
 
-# 8.bb
+# 8.b Without using the rowMean function, output the average score of students whose average math score over 90 points during the semester. write R code and its output. Example Output: Annie’s average grade this semester is 88.75.
+
+AverageScores <- (Math$Grade1 + Math$Grade2 + Math$Grade3 + Math$Grade4) / 4
+
+SelectedStudents <- Math[AverageScores > 90, ]
+cat(sprintf("%s's average grade this semester is %.2f.\n", 
+            SelectedStudents$Name, 
+            AverageScores[AverageScores > 90]))
+            
+AverageScores
+
+AverageScores <- (Math$Grade1 + Math$Grade2 + Math$Grade3 + Math$Grade4) / 4
+
+#c. Without using the mean function, output as follows for the tests in which the averagescore was less than 80 out of 4 tests. Example output: The nth test was difficult.
+
+TestsBelow80 <- which(AverageScores < 80)
+
+if (length(TestsBelow80) > 0) {
+  paste("The", paste(TestsBelow80, "test", ifelse(length(TestsBelow80) > 1, "s were", " was"), "difficult.\n"))
+} else {
+  paste("No tests had an average score less than 80.")
+}
+
+#d. Without using the max function, output as follows for students whose highest score for a semester exceeds 90 points. Example Output: Annie’s highest grade this semester is 95.
+
+HighestScores <- apply(Math[, 2:5], 1, function(x) sort(x, decreasing = TRUE)[1])
+
+StudentsHeighestAbove90 <- Math[HighestScores > 90, ]
+for (i in 1:nrow(StudentsHeighestAbove90)) {
+  paste(sprintf("%s's highest grade this semester is %d.\n", 
+              StudentsHeighestAbove90[i, "Name"], 
+              HighestScores[HighestScores > 90][i]))
+}
+HighestScores
+
+
