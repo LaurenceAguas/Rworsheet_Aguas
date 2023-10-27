@@ -180,6 +180,8 @@ colnames
 
 #e. Print the structure by using str() function. Describe the output.
 
+#The data.fram contains 6 obs ( each variable has 6 num/char)and 2 variables which is Temp and City
+
 str(CityTempCombined)
 
 #Output:
