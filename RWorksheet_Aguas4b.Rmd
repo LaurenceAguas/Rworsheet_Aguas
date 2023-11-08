@@ -1,0 +1,122 @@
+---
+title: 'Worksheet #4b'
+author: "Laurence Aguas"
+date: "2023-11-08"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#1. Using the for loop, create an R script that will display a 5x5 matrix as shown in Figure 1. It must contain vectorA = [1,2,3,4,5] and a 5 x 5 zero matrix.
+
+vectorA <- c(1,2,3,4,5)
+
+matrixA <- matrix(0,nrow = 5, ncol =5)
+
+for (j in 1:5)
+  for (k in 1:5)
+  {
+    matrixA[j,k] <- abs (vectorA[j] - vectorA[k])
+  }
+
+matrixA
+
+# 2. Print the string "*" using for() function. The output should be the same as shown in Figure
+for (j in 1:5) {
+  cat(paste0("\"", rep("*", j), "\""), "\n")
+}
+
+#3. Get an input from the user to print the Fibonacci sequence starting from the 1st input up to 500. Use repeat and break statements. Write the R Scripts and its output.
+
+
+#4a.Import the dataset as shown in Figure 1 you have created previously.
+
+
+#4b. Create a subset for gender(female and male). How many observations are there in Male? How about in Female? Write the R scripts and its output.
+
+
+#5a. Create a piechart that will include labels in percentage.Add some colors and title of the chart. Write the R scripts and show its output.
+
+data <- c(Food = 60, Electricity = 10, Savings = 5, Miscellaneous = 25)
+percentages <- paste(round(100 * data / sum(data), 1), "%", sep = "")
+pie(data, labels = paste(names(data), " (", percentages, ")", sep = ""), col = rainbow(length(data)), main = "Expense Distribution")
+legend("topright", names(data), cex = 0.8, fill = rainbow(length(data)))
+
+#6a.
+
+
+data(iris)
+str(iris)
+
+#b.
+
+meanofIris <- c(mean(iris$Sepal.Length), mean(iris$Sepal.Width), mean(iris$Petal.Length), mean(iris$Petal.Width))
+meanofIris
+
+
+
+
+meanSepalLength <- mean(iris$Sepal.Length)
+meanSepalWidth <- mean(iris$Sepal.Width)
+meanPetalLength <- mean(iris$Petal.Length)
+meanPetalWidth <- mean(iris$Petal.Width)
+
+meanIris <- data.frame(Sepal_Length = meanSepalLength,
+                        Sepal_Width = meanSepalWidth,
+                        Petal_Length = meanPetalLength,
+                        Petal_Width = meanPetalWidth)
+meanIris
+
+
+#c. Create a pie chart for the Species distribution. Add title, legends, and colors. Write the R script and its result.
+
+
+SpeciesCount <- table(iris$Species)
+pie(SpeciesCount, labels = SpeciesCount, col = rainbow(length(SpeciesCount)), main = "Species Distribution")
+legend("topright", names(SpeciesCount), cex = 0.8, fill = rainbow(length(SpeciesCount)))
+
+SpeciesCount
+
+#d.
+SetosalSubset <- subset(iris, Species == "setosa")
+VersicolorSubset <- subset(iris, Species == "versicolor")
+VirginicaSubset <- subset(iris, Species == "virginica")
+tail(SetosalSubset, 6)
+tail(VersicolorSubset, 6)
+tail(VirginicaSubset, 6)
+
+#e. Create a scatterplot of the sepal.length and sepal.width using the different species(setosa,versicolor,virginica). Add a title = “Iris Dataset”, subtitle = “Sepal width and length, labels for the x and y axis, the pch symbol and colors should be based on the species.
+
+# Convert the "Species" column to a factor
+iris$Species <- as.factor(iris$Species)
+
+# Creating a scatterplot
+plot(
+  Sepal.Length ~ Sepal.Width,
+  data = iris,
+  pch = as.integer(iris$Species),  # Use different pch symbols for each species
+  col = as.integer(iris$Species),  # Use different colors for each species
+  xlab = "Sepal Length",
+  ylab = "Sepal Width",
+  main = "Iris Dataset",
+  sub = "Sepal width and length"
+)
+
+# Add a legend
+legend("topright", legend = levels(iris$Species), col = 1:3, pch = 1:3, cex = 0.8, title = "Species")
+
+#f.Interpret the result.
+
+# The dataset is organized into a data frame with 150 observations (rows) and five variables (columns).
+# length, width, length, and sepal of a petal. The names of the four numerical variables are width. These represent the length and width of the petals, in that order.
+# The sixth variable is Species, the component variable that represents the species of iris flowers. "Setosa," "versicolor," and "virginica," which represent the numerous iris flower species included in the dataset, are its three tiers.
+
+#7.Import the alexa-file.xlsx. Check on the variations. Notice that there are extra whitespaces among black variants (Black Dot, Black Plus, Black Show, Black Spot). Also on the white variants (White Dot, White Plus, White Show, White Spot).
+
+
+
+
+
+
