@@ -1,0 +1,41 @@
+---
+title: "RWorksheet_Aguas#4c"
+author: "Laurence Aguas"
+date: "2023-11-22"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#1a.
+```{r}
+
+mpgcsv <- read.csv(file = "mpg.csv", header = T, sep = ",")
+mpgcsv
+
+#or this = mpgcsv = read.csv("mpg.csv")
+#mpgcsv
+
+```
+#1b.
+```{r}
+
+CategoricalVariables <- names(sapply(mpgcsv, function(x) is.factor(x) || is.character(x)))
+
+CategoricalVariables
+
+str(mpgcsv)
+
+```
+
+#1c.
+```{r}
+
+continues <- sapply(mpgcsv, is.numeric)
+continuesvars <- names(mpgcsv)[continues] 
+continuesvars
+
+
+```
